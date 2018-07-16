@@ -35,16 +35,25 @@ megsToSend.addEventListener('change', function(e) {
   }
 });
 
+function dropAllStreams(stream) {
+	stream.getTracks().forEach(track => track.stop())
+}
+function fixForIOS() {
+    navigator.mediaDevices
+    .getUserMedia({
+      audio: true,
+      video: true
+    })
+    .then(dropAllStreams)
+    .catch(e => alert(`getUserMedia() error: ${e.name}`));
+}
+
 function createConnection() {
   sendButton.disabled = true;
   megsToSend.disabled = true;
   const servers = null;
 
- navigator.mediaDevices
-    .getUserMedia({
-      audio: true,
-      video: true
-    })
+  fixForIOS()
 
   bytesToSend = Math.round(megsToSend.value) * 1024 * 1024;
 
