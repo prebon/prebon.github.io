@@ -39,7 +39,7 @@ function dropAllStreams(stream) {
 	trace('dropAllStream start')
 	stream.getTracks().forEach( (track) => {
 		track.stop();
-		console.log(' stop track $(track.toString()))
+		trace(' stop track ${track.toString()})
 	});
 	trace('dropAllStreams exit')
 }
