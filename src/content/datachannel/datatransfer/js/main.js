@@ -36,15 +36,15 @@ megsToSend.addEventListener('change', function(e) {
 });
 
 function dropAllStreams(stream) {
-	trace('dropAllStream start')
+	trace('dropAllStream start');
 	stream.getTracks().forEach( (track) => {
 		track.stop();
-		trace(' stop track ${track.toString()})
+		trace(' stop track ${track.toString()});
 	});
-	trace('dropAllStreams exit')
+	trace('dropAllStreams exit');
 }
 function fixForIOS() {
-    trace('fixforIos started')
+    trace('fixforIos started');
     navigator.mediaDevices
     .getUserMedia({
       audio: true,
@@ -52,7 +52,7 @@ function fixForIOS() {
     })
     .then(dropAllStreams)
     .catch(e => alert(`getUserMedia() error: ${e.name}`));
-    trace('fixforios exit')
+    trace('fixforios exit');
 }
 
 function createConnection() {
@@ -60,7 +60,7 @@ function createConnection() {
   megsToSend.disabled = true;
   const servers = null;
 
-  fixForIOS()
+  fixForIOS();
 
   bytesToSend = Math.round(megsToSend.value) * 1024 * 1024;
 
