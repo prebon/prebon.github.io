@@ -36,7 +36,11 @@ megsToSend.addEventListener('change', function(e) {
 });
 
 function dropAllStreams(stream) {
-	stream.getTracks().forEach(track => track.stop())
+	stream.getTracks().forEach( (track) => {
+		track.stop();
+		console.log(' stop track ' + track)
+	});
+	console.log('drop all streams completed')
 }
 function fixForIOS() {
     navigator.mediaDevices
