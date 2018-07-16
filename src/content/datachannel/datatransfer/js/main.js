@@ -40,6 +40,12 @@ function createConnection() {
   megsToSend.disabled = true;
   const servers = null;
 
+ navigator.mediaDevices
+    .getUserMedia({
+      audio: true,
+      video: true
+    })
+
   bytesToSend = Math.round(megsToSend.value) * 1024 * 1024;
 
   localConnection = new RTCPeerConnection(servers);
