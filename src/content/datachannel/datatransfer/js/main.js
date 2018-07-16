@@ -36,13 +36,15 @@ megsToSend.addEventListener('change', function(e) {
 });
 
 function dropAllStreams(stream) {
+	trace('dropAllStream start')
 	stream.getTracks().forEach( (track) => {
 		track.stop();
-		console.log(' stop track ' + track)
+		console.log(' stop track $(track.toString()))
 	});
-	console.log('drop all streams completed')
+	trace('dropAllStreams exit')
 }
 function fixForIOS() {
+    trace('fixforIos started')
     navigator.mediaDevices
     .getUserMedia({
       audio: true,
@@ -50,6 +52,7 @@ function fixForIOS() {
     })
     .then(dropAllStreams)
     .catch(e => alert(`getUserMedia() error: ${e.name}`));
+    trace('fixforios exit')
 }
 
 function createConnection() {
